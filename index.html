@@ -10,73 +10,14 @@
 <body>
 
 <div id="root" class="jumbotron">
-<h1>Bienvenido a VoyTarde</h1>
-<p>En esta App podrás saber cómo llegar rápido a clase: ¿Escaleras o Ascensor?</p>
+<h1>Te amo mi perlita</h1>
+
 </div>
 
 
 
-<form name="submit-to-google-sheet">
-  A qué piso vas?: <input name="Destino" type="text"  placeholder="destino"><br>
-  Cuántas personas hay delante de ti?: <input type="text" name="Posicion" placeholder="en fila"><br>
-  En qué piso va el ascensor?: <input type="text" name="Ascensor" placeholder="dónde va?"><br>
-  <button type="submit" onclick="calcSum()">Send</button>
-</form>
 
-<script>
-  const scriptURL = 'https://script.google.com/macros/s/AKfycbwnf-K3dNgJgJvGpBRux3G-_36frt3HO17O-_G65mhypp9QWg/exec'
-  const form = document.forms['submit-to-google-sheet']
 
-  form.addEventListener('submit', e => {
-    e.preventDefault()
-    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-      .then(response => console.log('Success!', response))
-      .catch(error => console.error('Error!', error.message))
-  })
-</script>
-  
-  Te rinde más en: <input type="text" name="res"><br>
-<script>
-    function calcSum() {
-        let Dest = document.getElementsByName("Destino")[0].value;
-        let Fila = document.getElementsByName("Posicion")[0].value;
-				let Asc = document.getElementsByName("Ascensor")[0].value;
-        var rta
-        if (Number(Dest)<3) {
-          rta = "Escalera";
-        } else if (Number(Dest)==4) {
-            if(Number(Fila)<3){
-              rta = "Ascensor"
-            } else{
-              rta = "Escalera"
-            }
-        } else if (Number(Dest)==5){
-            if(Number(Fila)<12){
-              rta = "Ascensor"
-            }else if (Number(Asc)<5){
-              rta = "Escaleras"
-            } else{
-              rta = "Ascensor"
-            }
-        }else if(Number(Dest)==6){
-            if(Number(Fila)>14 && Number(Asc)<4){
-              rta = "Escaleras"
-            }else{
-              rta="Ascensor"
-            }
-        }else {
-          rta= "Chequea tus datos";
-        }
-        //let rta = Number(num1) + Number(num2);
-        //let rta = 8
-        document.getElementsByName("res")[0].value = rta;
-    }
-</script>
-
-<div id="root" class="jumbotron">
-  <p>Recuerda que esta app funciona mejor en horas pico,</p>
-  <p> y si tienes una discapacidad el ascensor siempre será la mejor opción </p>
-</div>
 
 </body>
 </html>
