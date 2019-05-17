@@ -1,0 +1,18 @@
+<form>
+A qué piso vas?: <input type="text" name="Destino" value=""><br>
+Cuántas personas hay delante de ti?: <input type="text" name="Posicion" value=""><br>
+En qué piso va el ascensor?: <input type="text" name="Ascensor" value=""><br>
+<input type="button" value="Calcular" onclick="calcSum()">
+</form>
+
+<script>
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbwnf-K3dNgJgJvGpBRux3G-_36frt3HO17O-_G65mhypp9QWg/exec'
+  const form = document.forms['submit-to-google-sheet']
+
+  form.addEventListener('submit', e => {
+    e.preventDefault()
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+      .then(response => console.log('Success!', response))
+      .catch(error => console.error('Error!', error.message))
+  })
+</script>
